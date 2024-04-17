@@ -1,19 +1,18 @@
+package ProyectoFinalSimulacion;
 
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author Grupo 3
  */
-
 public class Solicitud {
     
     public enum Estado {
-    PENDIENTE,
-    COMPLETADO,
-    CANCELADO
-}
+        PENDIENTE,
+        COMPLETADO,
+        CANCELADO
+    }
     
     int idSolicitud;
     String ubicacion;
@@ -50,9 +49,7 @@ public class Solicitud {
             return;
         }
        
-    }
-
-     
+    } 
 
     public int getIdSolicitud() {
         return idSolicitud;
@@ -109,9 +106,5 @@ public class Solicitud {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-    
-
-  
-    
-    
+   
 }

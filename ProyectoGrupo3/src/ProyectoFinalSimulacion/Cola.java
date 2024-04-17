@@ -1,6 +1,6 @@
+package ProyectoFinalSimulacion;
 
 import javax.swing.JOptionPane;
-
 
 /**
  *

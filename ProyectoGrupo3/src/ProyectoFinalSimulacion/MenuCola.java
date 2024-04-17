@@ -1,16 +1,12 @@
-
-import javax.swing.JOptionPane;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package ProyectoFinalSimulacion;
 
 /**
  *
- * @author varga
+ * @author Grupo 3
  */
-public class Menu {
+import javax.swing.JOptionPane;
+
+public class MenuCola {
 
     int op = 0;
     Cola c = new Cola();
