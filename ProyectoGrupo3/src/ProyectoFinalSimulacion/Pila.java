@@ -6,9 +6,8 @@ import javax.swing.JOptionPane;
  *
  * @author Grupo 3
  */
-
 public class Pila {
-    
+
     //atributos
     private NodoP cima;
     private int tamaño;
@@ -20,9 +19,8 @@ public class Pila {
         this.capacidad = capacidad;
         this.tamaño = 0;
     }
-    
+
     //============================ FUNCIONALIDADES =============================
-    
     //metodo para verificar si esta vacia
     public boolean estaVacia() {
         if (cima == null) {
@@ -31,12 +29,12 @@ public class Pila {
             return false;
         }
     }
-    
+
     //metodo para verificar si esta lleno
     public boolean estaLlena() {
         return tamaño == capacidad;
     }
-    
+
     //metodo para apilar
     public void apilar(Ruta ruta) {
         //se crea un nuevo nodo para asignarle rutas
@@ -67,7 +65,7 @@ public class Pila {
             return null;
         }
     }
-    
+
     //metodo para mostrar
     public void mostrar() {
         if (!estaVacia()) {
@@ -82,5 +80,16 @@ public class Pila {
             JOptionPane.showMessageDialog(null, "Imposible mostrar, la pila está vacía", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+// metodo creado para que el grafo pueda llamar las rutas proporcionadas aqui en pila
+    public Ruta[] Rutas() {
+        Ruta[] Rutas = new Ruta[tamaño];
+        NodoP nodoAux = cima;
+        int posicion = 0;
+        while (nodoAux != null) {
+            Rutas[posicion] = nodoAux.getRuta();
+            nodoAux = nodoAux.getSiguiente();
+            posicion++;
+        }
+        return Rutas;
+    }
 }//fin de la clase
