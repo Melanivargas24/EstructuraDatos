@@ -13,9 +13,7 @@ public class Simulacion {
         MenuCola c =  new MenuCola();
         c.menu();
         
-        //instancia para llamar al menu de las pilas
-        MenuPila p = new MenuPila();
-        p.mostrarMenu();
+       
         
     }
     

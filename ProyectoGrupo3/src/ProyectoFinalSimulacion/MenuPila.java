@@ -26,7 +26,7 @@ public class MenuPila {
             try {
                 String opcion = JOptionPane.showInputDialog(null, """
                                                                   Seleccione una opci\u00f3n:
-                                                                  1. Solicitar viaje
+                                                                  1. Ingresar dirección
                                                                   2. Asignar conductor
                                                                   3. Mostrar rutas en la pila
                                                                   4. Salir""");

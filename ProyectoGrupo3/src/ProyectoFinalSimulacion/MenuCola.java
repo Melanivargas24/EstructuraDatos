@@ -8,8 +8,9 @@ import javax.swing.JOptionPane;
 
 public class MenuCola {
 
-    int op = 0;
+   int op = 0;
     Cola c = new Cola();
+    MenuPila pila = new MenuPila();
 
     public void menu() {
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "\t***Menú principal***\n"
@@ -17,7 +18,8 @@ public class MenuCola {
                 + "\n2= Atender solicitud"
                 + "\n3= Solicitudes pendientes"
                 + "\n4= Cancelar una solicitud"
-                + "\n5= Salir"
+                + "\n5= Siguiente"
+                 + "\n6= Salir"
                 + "\nDigite la opción deseada", "Menú", JOptionPane.QUESTION_MESSAGE));
 
         switch (op) {
@@ -39,6 +41,10 @@ public class MenuCola {
                 menu();
                 break;
             case 5:
+                pila.mostrarMenu();
+                menu();
+                break;
+            case 6:
                 System.exit(0);
             default:
                 JOptionPane.showMessageDialog(null, "Opción incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
