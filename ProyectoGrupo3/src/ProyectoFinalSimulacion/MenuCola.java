@@ -1,47 +1,44 @@
 package ProyectoFinalSimulacion;
 
-/**
- *
- * @author Grupo 3
- */
 import javax.swing.JOptionPane;
 
 public class MenuCola {
 
-   int op = 0;
-    Cola c = new Cola();
-    MenuPila pila = new MenuPila();
+    int op = 0;
+    Cola colaSolicitudes = new Cola();
+    MenuPila menuPila = new MenuPila();
 
     public void menu() {
-        op = Integer.parseInt(JOptionPane.showInputDialog(null, "\t***Menú principal***\n"
-                + "\n1= Realizar una solicitud"
-                + "\n2= Atender solicitud"
-                + "\n3= Solicitudes pendientes"
-                + "\n4= Cancelar una solicitud"
-                + "\n5= Siguiente"
-                 + "\n6= Salir"
-                + "\nDigite la opción deseada", "Menú", JOptionPane.QUESTION_MESSAGE));
+        op = Integer.parseInt(JOptionPane.showInputDialog(null, """
+                                                                ***Menu principal***
+                                                                
+                                                                1= Realizar una solicitud
+                                                                2= Atender solicitud
+                                                                3= Solicitudes pendientes
+                                                                4= Cancelar una solicitud
+                                                                5= Siguiente
+                                                                6= Salir
+                                                                Digite la opción deseada""", "Menú", JOptionPane.QUESTION_MESSAGE));
 
         switch (op) {
             case 1:
-                c.encolar();
+                realizarSolicitud();
                 menu();
                 break;
             case 2:
-                c.desencolar();
+                atenderSolicitud();
                 menu();
                 break;
             case 3:
-                c.mostrar();
+                mostrarSolicitudes();
                 menu();
                 break;
             case 4:
-                int id= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la solicitud a cancelar"));
-                c.cancelarSolicitud(id);
+                cancelarSolicitud();
                 menu();
                 break;
             case 5:
-                pila.mostrarMenu();
+                menuPila.mostrarMenu();
                 menu();
                 break;
             case 6:
@@ -49,8 +46,23 @@ public class MenuCola {
             default:
                 JOptionPane.showMessageDialog(null, "Opción incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
                 menu();
-
         }
     }
-    
+
+    public void realizarSolicitud() {
+        colaSolicitudes.encolar();
+    }
+
+    public void atenderSolicitud() {
+        colaSolicitudes.desencolar();
+    }
+
+    public void mostrarSolicitudes() {
+        colaSolicitudes.mostrar();
+    }
+
+    public void cancelarSolicitud() {
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la solicitud a cancelar"));
+        colaSolicitudes.cancelarSolicitud(id);
+    }
 }

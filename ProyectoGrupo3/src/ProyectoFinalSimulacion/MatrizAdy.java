@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ProyectoFinalSimulacion;
 
-/**
- *
- * @author XPC
- */
 public class MatrizAdy {
     private int n;
     private int [][] matriz;

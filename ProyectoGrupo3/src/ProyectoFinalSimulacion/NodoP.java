@@ -1,10 +1,5 @@
 package ProyectoFinalSimulacion;
 
-/**
- *
- * @author Grupo 3
- */
-
 public class NodoP {
     
     //atributos

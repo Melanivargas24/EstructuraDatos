@@ -2,25 +2,21 @@ package ProyectoFinalSimulacion;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Grupo 3
- */
 public class Solicitud {
-    
+
     public enum Estado {
         PENDIENTE,
         COMPLETADO,
         CANCELADO
     }
-    
-    int idSolicitud;
-    String ubicacion;
-    String pedido;
-    String restaurante;
-    String tipoPago;
-    String nomCliente;
-    Estado estado; //Pendiente, completado o cancelado
+
+    private int idSolicitud;
+    private String ubicacion;
+    private String pedido;
+    private String restaurante;
+    private String tipoPago;
+    private String nomCliente;
+    private Estado estado;
 
     public Solicitud() {
         this.idSolicitud = 0;
@@ -31,25 +27,22 @@ public class Solicitud {
         this.nomCliente = "";
         this.estado = Estado.PENDIENTE;
     }
-    
-     public void TipoPago() {
+
+    public void TipoPago() {
         String[] opciones = {"Efectivo", "Tarjeta"};
         int opcion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de pago", "Tipo de Pago",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-                        null, opciones, opciones[0]);
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null, opciones, opciones[0]);
 
-        // Verificamos la opción seleccionada por el usuario
         if (opcion == 0) {
             this.tipoPago = "Efectivo";
         } else if (opcion == 1) {
             this.tipoPago = "Tarjeta";
         } else {
-            // En caso de que el usuario cierre la ventana sin seleccionar ninguna opción
             System.out.println("Operación cancelada");
             return;
         }
-       
-    } 
+    }
 
     public int getIdSolicitud() {
         return idSolicitud;
@@ -106,5 +99,4 @@ public class Solicitud {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-   
 }

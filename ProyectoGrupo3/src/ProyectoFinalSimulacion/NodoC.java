@@ -1,10 +1,7 @@
 package ProyectoFinalSimulacion;
 
-/**
- *
- * @author Grupo 3
- */
 public class NodoC {
+
     private Solicitud solicitud;
     private NodoC siguiente;
 
@@ -17,17 +14,14 @@ public class NodoC {
     }
 
     public void setSolicitud(Solicitud solicitud) {
-        this.solicitud= solicitud;
+        this.solicitud = solicitud;
     }
 
     public NodoC getSiguiente() {
         return siguiente;
     }
-    
 
     public void setSiguiente(NodoC siguiente) {
         this.siguiente = siguiente;
     }
 }
-
-

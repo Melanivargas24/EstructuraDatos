@@ -2,21 +2,14 @@ package ProyectoFinalSimulacion;
 
 import java.time.LocalDateTime;
 
-/**
- *
- * @author Grupo 3
- */
-
 public class Ruta {
-    
-    //atributos
+
     private String nombre;
     private String ubicacionInicio;
     private String ubicacionDestino;
     private LocalDateTime horaInicio;
-    private int duracion; //la duración debe ser en minutos
+    private int duracion;
 
-    //constructores
     public Ruta() {
     }
 
@@ -24,11 +17,10 @@ public class Ruta {
         this.nombre = nombre;
         this.ubicacionInicio = ubicacionInicio;
         this.ubicacionDestino = ubicacionDestino;
-        this.horaInicio = LocalDateTime.now(); //la fecha y hora actual
+        this.horaInicio = LocalDateTime.now();
         this.duracion = duracion;
     }
 
-    //encapsuladores = Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -69,20 +61,17 @@ public class Ruta {
         this.duracion = duracion;
     }
 
-    //metodo para obtener la hora de llegada basada en la hora de inicio y la duracion
     public LocalDateTime getHoraLlegada() {
         return horaInicio.plusMinutes(duracion);
     }
 
-    //metodo toString para representación de cadena de la ruta
     @Override
     public String toString() {
-        return "Nombre de la ruta: " + nombre + "\n" +
-               "Ubicación de inicio: " + ubicacionInicio + "\n" +
-               "Ubicación de destino: " + ubicacionDestino + "\n" +
-               "Hora de inicio: " + horaInicio.toString() + "\n" +
-               "Duración: " + duracion + " minutos\n" +
-               "Hora de llegada: " + getHoraLlegada().toString();
+        return "Nombre de la ruta: " + nombre + "\n"
+                + "Ubicación de inicio: " + ubicacionInicio + "\n"
+                + "Ubicación de destino: " + ubicacionDestino + "\n"
+                + "Hora de inicio: " + horaInicio.toString() + "\n"
+                + "Duración: " + duracion + " minutos\n"
+                + "Hora de llegada: " + getHoraLlegada().toString();
     }
-    
-}//fin de la clase
+}
