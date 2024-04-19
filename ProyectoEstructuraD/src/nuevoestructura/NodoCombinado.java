@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package nuevoestructura;
 
 /**
+ * Clase NodoCombinado que contiene tanto la información de la solicitud como la
+ * de la ruta. Cada nodo combinado contiene una solicitud, una ruta asociada y
+ * una referencia al siguiente nodo combinado en la lista. Los datos almacenados
+ * en el nodo son de tipo Solicitud y Ruta, y la referencia al siguiente nodo es
+ * de tipo NodoCombinado. Esta clase se utiliza en la implementación de la lista
+ * simple en la clase ListaSimple.
  *
  * @author varga
  */
-// Clase NodoCombinado que contiene tanto la información de la solicitud como la de la ruta
 class NodoCombinado {
+
     private Solicitud solicitud;
     private Ruta ruta;
     private NodoCombinado siguiente;

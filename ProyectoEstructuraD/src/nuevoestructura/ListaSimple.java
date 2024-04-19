@@ -1,14 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package nuevoestructura;
 
 /**
+ * Esta clase representa una lista simple que contiene nodos combinados de
+ * solicitud y ruta. Cada nodo combinado contiene una solicitud y una ruta
+ * asociada. La lista puede crecer dinámicamente al insertar nodos al final y
+ * puede eliminar el primer nodo. También puede mostrar su contenido y
+ * proporcionar el tamaño actual de la lista.
  *
  * @author varga
  */
 public class ListaSimple {
+
     private NodoCombinado inicio;
     private NodoCombinado fin;
 
