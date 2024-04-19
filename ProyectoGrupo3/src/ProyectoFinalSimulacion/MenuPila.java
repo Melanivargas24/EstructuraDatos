@@ -14,6 +14,10 @@ public class MenuPila {
         this.pilaRutas = new Pila(5); //por ejemplo, 5 rutas
     }
 
+    public Pila getPilaRutas() {
+        return pilaRutas;
+    }
+    
     //metodo para mostrar el menu de las pilas
     public void mostrarMenu() {
         boolean salir = false;

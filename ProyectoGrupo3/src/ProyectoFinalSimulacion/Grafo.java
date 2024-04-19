@@ -5,40 +5,37 @@ import java.time.LocalDateTime;
 public class Grafo {
 
     private final MatrizAdy matriz; // Usar la matriz de adyacencia para representar el grafo
+    
+    public Grafo() {
 
-    public Grafo(int n) {
-        this.matriz = new MatrizAdy(n);
+        this.matriz = new MatrizAdy(5);
     }
 
     // Método para agregar una conexión entre dos nodos
     public void agregarConexion(int origen, int destino) {
-        matriz.agregar(origen, origen);
+        matriz.agregar(origen, destino);
     }
 
-    // Método para realizar los repartos
+// Método para realizar los repartos
     public void realizarRepartos(Pila pilaRutas, Cola colaSolicitudes) {
         Ruta[] rutas = pilaRutas.Rutas(); // Obtener las rutas de la pila
-        while (!colaSolicitudes.vacia()) { // Mientras haya solicitudes en la cola
-            Solicitud solicitud; // Obtener la siguiente solicitud
-            solicitud = colaSolicitudes.desencolar();
+        Solicitud solicitud=new Solicitud();
+        while (!colaSolicitudes.vacia()) {
+             colaSolicitudes.desencolar(); // Obtener la siguiente solicitud
 
-            // Iterar sobre las rutas disponibles
             for (Ruta ruta : rutas) {
-                if (ruta.getUbicacionInicio().equals(solicitud.getRestaurante())) {
-                    // Si la ruta es del restaurante de la solicitud, realizar el reparto
-                    System.out.println("Fecha y hora de recogida: " + LocalDateTime.now());
-                    System.out.println("Restaurante: " + ruta.getUbicacionInicio());
-                    // Simular la duración del reparto
-                    try {
-                        Thread.sleep(30 * 60 * 1000); // 30 minutos en milisegundos
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                if (ruta.getUbicacionInicio().equals(solicitud.getRestaurante()+ruta.getUbicacionDestino())) {
+                    // Realizar el reparto
+                    System.out.println("Fecha y hora de la recoleccion del pedido: " + LocalDateTime.now());
+                    System.out.println("Restaurante: " +ruta.getUbicacionInicio()+"Heredia, plaza del carmen");
+                    //Entrega al cliente
+                    System.out.println("Entrega al cliente de manera exitosa");
+                    System.out.println("Ubicacion destino: " + ruta.getUbicacionDestino()+"Barreal de Heredia");
+                    
                     }
-                    // Pedido exitoso al cliente
-                    System.out.println("Pedido exitoso para el cliente: " + solicitud.getNomCliente() + " en " + ruta.getUbicacionDestino());
                     break; // Salir del bucle una vez que se realiza el reparto
                 }
             }
         }
     }
-}
+

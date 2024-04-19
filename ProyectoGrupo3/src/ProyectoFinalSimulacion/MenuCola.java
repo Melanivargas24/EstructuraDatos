@@ -7,7 +7,7 @@ public class MenuCola {
     int op = 0;
     Cola colaSolicitudes = new Cola();
     MenuPila menuPila = new MenuPila();
-
+    Grafo g =new Grafo();
     public void menu() {
         op = Integer.parseInt(JOptionPane.showInputDialog(null, """
                                                                 ***Menu principal***
@@ -17,7 +17,8 @@ public class MenuCola {
                                                                 3= Solicitudes pendientes
                                                                 4= Cancelar una solicitud
                                                                 5= Siguiente
-                                                                6= Salir
+                                                                6= Informacion del pedido
+                                                                7= Salir
                                                                 Digite la opción deseada""", "Menú", JOptionPane.QUESTION_MESSAGE));
 
         switch (op) {
@@ -42,6 +43,10 @@ public class MenuCola {
                 menu();
                 break;
             case 6:
+                g.realizarRepartos(menuPila.getPilaRutas(), colaSolicitudes);
+                menu();
+                break;
+            case 7:
                 System.exit(0);
             default:
                 JOptionPane.showMessageDialog(null, "Opción incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
