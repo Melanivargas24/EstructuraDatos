@@ -1,19 +1,24 @@
 package ProyectoFinalSimulacion;
 
 public class NodoLS {
-    private ListaSimpleEnlazada solicitud;
-    private NodoLS siguiente;
 
-    public NodoLS(ListaSimpleEnlazada solicitud) {
+    public Solicitud solicitud;
+    public NodoLS siguiente;
+
+    public NodoLS() {
+        this.siguiente = null;
+    }
+
+    public NodoLS(Solicitud solicitud) {
         this.solicitud = solicitud;
         this.siguiente = null;
     }
 
-    public ListaSimpleEnlazada getSolicitud() {
+    public Solicitud getSolicitud() {
         return solicitud;
     }
 
-    public void setSolicitud(ListaSimpleEnlazada solicitud) {
+    public void setSolicitud(Solicitud solicitud) {
         this.solicitud = solicitud;
     }
 

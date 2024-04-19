@@ -19,9 +19,11 @@ public class Grafo {
     public void realizarRepartos(Pila pilaRutas, Cola colaSolicitudes) {
         Ruta[] rutas = pilaRutas.Rutas(); // Obtener las rutas de la pila
         while (!colaSolicitudes.vacia()) { // Mientras haya solicitudes en la cola
-            ListaSimpleEnlazada solicitud =new ListaSimpleEnlazada();
-            colaSolicitudes.desencolar(); // Obtener la siguiente solicitud
-            for (Ruta ruta : rutas) { // Iterar sobre las rutas disponibles
+            Solicitud solicitud; // Obtener la siguiente solicitud
+            solicitud = colaSolicitudes.desencolar();
+
+            // Iterar sobre las rutas disponibles
+            for (Ruta ruta : rutas) {
                 if (ruta.getUbicacionInicio().equals(solicitud.getRestaurante())) {
                     // Si la ruta es del restaurante de la solicitud, realizar el reparto
                     System.out.println("Fecha y hora de recogida: " + LocalDateTime.now());
@@ -33,13 +35,10 @@ public class Grafo {
                         e.printStackTrace();
                     }
                     // Pedido exitoso al cliente
-                    System.out.println("Pedido exitoso para el cliente: " + solicitud.getNomCliente()+ ruta.getUbicacionDestino());
+                    System.out.println("Pedido exitoso para el cliente: " + solicitud.getNomCliente() + " en " + ruta.getUbicacionDestino());
                     break; // Salir del bucle una vez que se realiza el reparto
                 }
             }
         }
     }
 }
-
-
-

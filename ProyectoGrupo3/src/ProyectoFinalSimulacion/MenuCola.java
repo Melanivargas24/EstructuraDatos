@@ -54,7 +54,20 @@ public class MenuCola {
     }
 
     public void atenderSolicitud() {
-        colaSolicitudes.desencolar();
+        Solicitud solicitud = colaSolicitudes.desencolar(); // Obtener la solicitud desencolada
+        if (solicitud != null) {
+            // Comprobamos si la solicitud ha sido completada
+            if (solicitud.getEstado() == Estado.COMPLETADO) {
+                JOptionPane.showMessageDialog(null, "Solicitud ya completada", "Atender Solicitud",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Atendiendo solicitud", "Atender Solicitud",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay solicitudes pendientes", "Atender Solicitud",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public void mostrarSolicitudes() {

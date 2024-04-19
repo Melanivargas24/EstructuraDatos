@@ -17,7 +17,7 @@ public class Cola {
     }
 
     public void encolar() {
-        ListaSimpleEnlazada sol = new ListaSimpleEnlazada();
+        Solicitud sol = new Solicitud();
         sol.setIdSolicitud(Integer.parseInt(JOptionPane.showInputDialog("ID de la solicitud:")));
         sol.setNomCliente(JOptionPane.showInputDialog("Nombre del cliente:"));
         sol.setUbicacion(JOptionPane.showInputDialog("Ubicación:"));
@@ -36,24 +36,19 @@ public class Cola {
         }
     }
 
-    public void desencolar() {
+    public Solicitud desencolar() {
         if (!vacia()) {
-            // Obtener la solicitud que se va a desencolar
-            ListaSimpleEnlazada solicitud = inicio.getSolicitud();
-
-            // Comprobamos si la solicitud ha sido completada
-            if (solicitud.getEstado() != ListaSimpleEnlazada.Estado.COMPLETADO
-                    && solicitud.getEstado() != ListaSimpleEnlazada.Estado.CANCELADO) {
+            Solicitud solicitudExtraida = inicio.getSolicitud();
+            // Comprobamos si la solicitud ha sido completada o cancelada
+            if (solicitudExtraida.getEstado() != Estado.COMPLETADO
+                    && solicitudExtraida.getEstado() != Estado.CANCELADO) {
                 // Cambiar el estado de la solicitud
-                solicitud.setEstado(ListaSimpleEnlazada.Estado.COMPLETADO);
+                solicitudExtraida.setEstado(Estado.COMPLETADO);
             }
-
-            // Desencolar la solicitud eliminando el primer nodo
             inicio = inicio.getSiguiente();
-
-            JOptionPane.showMessageDialog(null, "Solicitud extraída", "Desencolar", JOptionPane.CLOSED_OPTION);
+            return solicitudExtraida;
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede extraer", "Cola vacía", JOptionPane.CLOSED_OPTION);
+            return null;
         }
     }
 
@@ -62,7 +57,7 @@ public class Cola {
         while (aux != null) {
             if (aux.getSolicitud().getIdSolicitud() == id) {
                 // Si se encuentra la solicitud con el ID dado, se cambia su estado a "Cancelado"
-                aux.getSolicitud().setEstado(ListaSimpleEnlazada.Estado.CANCELADO);
+                aux.getSolicitud().setEstado(Estado.CANCELADO);
                 JOptionPane.showMessageDialog(null, "Solicitud cancelada", "Cancelar Solicitud",
                         JOptionPane.INFORMATION_MESSAGE);
                 return; // Se sale del método después de cancelar la solicitud
