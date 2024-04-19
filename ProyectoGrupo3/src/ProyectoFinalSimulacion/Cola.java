@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class Cola {
 
-    private NodoC inicio;
-    private NodoC fin;
+    private NodoLS inicio;
+    private NodoLS fin;
 
     public Cola() {
         this.inicio = null;
@@ -17,15 +17,16 @@ public class Cola {
     }
 
     public void encolar() {
-        Solicitud sol = new Solicitud();
+        ListaSimpleEnlazada sol = new ListaSimpleEnlazada();
         sol.setIdSolicitud(Integer.parseInt(JOptionPane.showInputDialog("ID de la solicitud:")));
         sol.setNomCliente(JOptionPane.showInputDialog("Nombre del cliente:"));
         sol.setUbicacion(JOptionPane.showInputDialog("Ubicación:"));
         sol.setPedido(JOptionPane.showInputDialog("Pedido:"));
         sol.setRestaurante(JOptionPane.showInputDialog("Restaurante:"));
-        sol.TipoPago();
-        NodoC nuevo = new NodoC();
-        nuevo.setSolicitud(sol);
+        sol.tipoPago(); // Llamar al método modificado de tipoPago
+
+        NodoLS nuevo = new NodoLS(sol);
+
         if (vacia()) {
             inicio = nuevo;
             fin = nuevo;
@@ -38,13 +39,13 @@ public class Cola {
     public void desencolar() {
         if (!vacia()) {
             // Obtener la solicitud que se va a desencolar
-            Solicitud solicitud = inicio.getSolicitud();
+            ListaSimpleEnlazada solicitud = inicio.getSolicitud();
 
             // Comprobamos si la solicitud ha sido completada
-            if (!solicitud.getEstado().equals(Solicitud.Estado.COMPLETADO)
-                    && !solicitud.getEstado().equals(Solicitud.Estado.CANCELADO)) {
+            if (solicitud.getEstado() != ListaSimpleEnlazada.Estado.COMPLETADO
+                    && solicitud.getEstado() != ListaSimpleEnlazada.Estado.CANCELADO) {
                 // Cambiar el estado de la solicitud
-                solicitud.setEstado(Solicitud.Estado.COMPLETADO);
+                solicitud.setEstado(ListaSimpleEnlazada.Estado.COMPLETADO);
             }
 
             // Desencolar la solicitud eliminando el primer nodo
@@ -57,11 +58,11 @@ public class Cola {
     }
 
     public void cancelarSolicitud(int id) {
-        NodoC aux = inicio;
+        NodoLS aux = inicio;
         while (aux != null) {
             if (aux.getSolicitud().getIdSolicitud() == id) {
                 // Si se encuentra la solicitud con el ID dado, se cambia su estado a "Cancelado"
-                aux.getSolicitud().setEstado(Solicitud.Estado.CANCELADO);
+                aux.getSolicitud().setEstado(ListaSimpleEnlazada.Estado.CANCELADO);
                 JOptionPane.showMessageDialog(null, "Solicitud cancelada", "Cancelar Solicitud",
                         JOptionPane.INFORMATION_MESSAGE);
                 return; // Se sale del método después de cancelar la solicitud
@@ -75,16 +76,10 @@ public class Cola {
 
     public void mostrar() {
         if (!vacia()) {
-            String s = "";
-            NodoC aux = inicio;
+            StringBuilder s = new StringBuilder();
+            NodoLS aux = inicio;
             while (aux != null) {
-                s += aux.getSolicitud().getIdSolicitud() + " - "
-                        + aux.getSolicitud().getNomCliente() + " - "
-                        + aux.getSolicitud().getUbicacion() + " - "
-                        + aux.getSolicitud().getPedido() + " - "
-                        + aux.getSolicitud().getRestaurante() + " - "
-                        + aux.getSolicitud().getTipoPago() + " - "
-                        + aux.getSolicitud().getEstado() + "\n ↑ \n";
+                s.append(aux.getSolicitud()).append(" ↑ \n");
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "La cola contiene: \n" + s, "Mostrar Datos",

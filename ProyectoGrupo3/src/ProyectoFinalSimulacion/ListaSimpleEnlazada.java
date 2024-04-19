@@ -1,75 +1,119 @@
 package ProyectoFinalSimulacion;
 
+import javax.swing.JOptionPane;
+
 public class ListaSimpleEnlazada {
 
-    public Nodo inicio;
+    public enum Estado {
+        PENDIENTE,
+        COMPLETADO,
+        CANCELADO
+    }
+
+    private int idSolicitud;
+    private String ubicacion;
+    private String pedido;
+    private String restaurante;
+    private String tipoPago;
+    private String nomCliente;
+    private Estado estado;
 
     public ListaSimpleEnlazada() {
-        this.inicio = null;
+        this.idSolicitud = 0;
+        this.ubicacion = "";
+        this.pedido = "";
+        this.restaurante = "";
+        this.tipoPago = "";
+        this.nomCliente = "";
+        this.estado = Estado.PENDIENTE;
     }
 
-    public boolean estaVacia() {
-        return inicio == null;
-    }
+    public void tipoPago() {
+        String[] opciones = {"Efectivo", "Tarjeta"};
+        int opcion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de pago", "Tipo de Pago",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null, opciones, opciones[0]);
 
-    public Nodo getInicio() {
-        return inicio;
-    }
-
-    public void insertarAlFinal(Solicitud solicitud) {
-        Nodo nuevo = new Nodo(solicitud);
-        if (estaVacia()) {
-            inicio = nuevo;
-        } else {
-            Nodo actual = inicio;
-            while (actual.getSiguiente() != null) {
-                actual = actual.getSiguiente();
-            }
-            actual.setSiguiente(nuevo);
-        }
-    }
-
-    public Solicitud eliminarAlInicio() {
-        if (!estaVacia()) {
-            Solicitud solicitudEliminada = inicio.getSolicitud();
-            inicio = inicio.getSiguiente();
-            return solicitudEliminada;
-        }
-        return null; // Retorna null si la lista está vacía
-    }
-
-    public void mostrar() {
-        if (!estaVacia()) {
-            Nodo actual = inicio;
-            while (actual != null) {
-                System.out.println(actual.getSolicitud());
-                actual = actual.getSiguiente();
-            }
-        } else {
-            System.out.println("La lista está vacía.");
+        switch (opcion) {
+            case 0:
+                this.tipoPago = "Efectivo";
+                break;
+            case 1:
+                this.tipoPago = "Tarjeta";
+                break;
+            default:
+                System.out.println("Operación cancelada");
+                return;
         }
     }
 
-    public static class Nodo {
+    // Getters y setters
+    public int getIdSolicitud() {
+        return idSolicitud;
+    }
 
-        public final Solicitud solicitud;
-        public Nodo siguiente;
+    public void setIdSolicitud(int idSolicitud) {
+        this.idSolicitud = idSolicitud;
+    }
 
-        public Nodo(Solicitud solicitud) {
-            this.solicitud = solicitud;
-            this.siguiente = null;
-        }
+    public String getUbicacion() {
+        return ubicacion;
+    }
 
-        public Solicitud getSolicitud() {
-            return solicitud;
-        }
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
 
-        public Nodo getSiguiente() {
-            return siguiente;
-        }
+    public String getPedido() {
+        return pedido;
+    }
 
-        public void setSiguiente(Nodo siguiente) {
-            this.siguiente = siguiente;
-        }
+    public void setPedido(String pedido) {
+        this.pedido = pedido;
+    }
+
+    public String getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(String restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+    public String getNomCliente() {
+        return nomCliente;
+    }
+
+    public void setNomCliente(String nomCliente) {
+        this.nomCliente = nomCliente;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Solicitud{"
+                + "idSolicitud=" + idSolicitud
+                + ", ubicacion='" + ubicacion + '\''
+                + ", pedido='" + pedido + '\''
+                + ", restaurante='" + restaurante + '\''
+                + ", tipoPago='" + tipoPago + '\''
+                + ", nomCliente='" + nomCliente + '\''
+                + ", estado=" + estado
+                + '}';
     }
 }

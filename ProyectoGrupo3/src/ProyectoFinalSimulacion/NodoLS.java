@@ -1,11 +1,11 @@
 package ProyectoFinalSimulacion;
 
-public class NodoC {
-
+public class NodoLS {
     private ListaSimpleEnlazada solicitud;
-    private NodoC siguiente;
+    private NodoLS siguiente;
 
-    public NodoC() {
+    public NodoLS(ListaSimpleEnlazada solicitud) {
+        this.solicitud = solicitud;
         this.siguiente = null;
     }
 
@@ -17,11 +17,11 @@ public class NodoC {
         this.solicitud = solicitud;
     }
 
-    public NodoC getSiguiente() {
+    public NodoLS getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoC siguiente) {
+    public void setSiguiente(NodoLS siguiente) {
         this.siguiente = siguiente;
     }
 }

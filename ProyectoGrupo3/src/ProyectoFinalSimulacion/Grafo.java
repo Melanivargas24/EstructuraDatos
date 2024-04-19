@@ -19,7 +19,7 @@ public class Grafo {
     public void realizarRepartos(Pila pilaRutas, Cola colaSolicitudes) {
         Ruta[] rutas = pilaRutas.Rutas(); // Obtener las rutas de la pila
         while (!colaSolicitudes.vacia()) { // Mientras haya solicitudes en la cola
-            Solicitud solicitud =new Solicitud();
+            ListaSimpleEnlazada solicitud =new ListaSimpleEnlazada();
             colaSolicitudes.desencolar(); // Obtener la siguiente solicitud
             for (Ruta ruta : rutas) { // Iterar sobre las rutas disponibles
                 if (ruta.getUbicacionInicio().equals(solicitud.getRestaurante())) {
