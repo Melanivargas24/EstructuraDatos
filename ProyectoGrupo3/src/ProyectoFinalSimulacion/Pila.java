@@ -14,6 +14,16 @@ public class Pila {
         this.tamaño = 0;
     }
 
+    public Pila() {
+        this.cima = cima;
+        this.tamaño = tamaño;
+        this.capacidad = 0;
+    }
+
+   
+    
+    
+
     public boolean estaVacia() {
         return cima == null;
     }
